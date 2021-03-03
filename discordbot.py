@@ -3,7 +3,7 @@ from discord.ext import commands
 
 import os
 
-bot = commands.Bot(command_prefix="t!")
+bot = commands.Bot(command_prefix="$")
 token = os.environ['DISCORD_BOT_TOKEN']
 
 if not discord.opus.is_loaded():
@@ -24,7 +24,7 @@ async def join(ctx):
     print("connected to:",channel.name)
 
 
-@bot.command(aliases=["dc"])
+@bot.command(aliases=["bye","dc"])
 async def disconnect(ctx):
     """Botをボイスチャンネルから切断します。"""
     voice_client = ctx.message.guild.voice_client
@@ -57,9 +57,4 @@ async def play(ctx):
 
     await ctx.send("再生しました。")
 
-@bot.command()
-async def 終了(ctx):
-    await message.channel.send('シャットダウンします')
-            await bot.client.logout()
-    
 bot.run(token)
